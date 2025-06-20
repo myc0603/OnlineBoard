@@ -1,5 +1,6 @@
 package com.board.domain;
 
+import com.board.dto.PostUpdateDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -27,14 +28,34 @@ public class Post {
     @NotBlank
     private String contents;
 
+    private boolean deleted = false;
+
     @NotNull
     private LocalDateTime createdDateTime;
+
+    @NotNull
+    private LocalDateTime lastModifiedDateTime;
 
     public static Post of(String title, String contents) {
         Post post = new Post();
         post.title = title;
         post.contents = contents;
         post.createdDateTime = LocalDateTime.now();
+        post.lastModifiedDateTime = post.createdDateTime;
         return post;
+    }
+
+    public void update(PostUpdateDto updateDto) {
+        title = updateDto.getTitle();
+        contents = updateDto.getContents();
+        lastModifiedDateTime = LocalDateTime.now();
+    }
+
+    public void delete() {
+        deleted = true;
+    }
+
+    public void restore() {
+        deleted = false;
     }
 }
