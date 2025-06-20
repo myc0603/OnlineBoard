@@ -9,11 +9,12 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class PostRepository {
 
     private final EntityManager em;
 
+    @Transactional
     public void save(Post post) {
         em.persist(post);
     }
