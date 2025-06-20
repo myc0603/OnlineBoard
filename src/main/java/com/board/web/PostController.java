@@ -3,7 +3,6 @@ package com.board.web;
 import com.board.domain.Post;
 import com.board.domain.PostRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +14,6 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@Slf4j
 public class PostController {
 
     private final PostRepository postRepository;
@@ -45,5 +43,4 @@ public class PostController {
         postRepository.save(postWriteDto.convertToPostEntity());
         return "redirect:/posts";
     }
-
 }
