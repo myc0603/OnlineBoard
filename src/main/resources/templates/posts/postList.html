@@ -25,13 +25,19 @@
             <tr th:each="post : ${posts}">
                 <td th:text="${post.id}"></td>
                 <td>
-                    <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">제목</a>
+                    <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}">제목</a>
                 </td>
-                <td th:text="${#temporals.format(post.createdDateTime, 'yyyy/MM/dd HH:mm')}"></td>
+                <td th:text="${#temporals.format(post.createdDateTime, 'yyyy/MM/dd HH:mm')}">2025/06/03 11:11</td>
             </tr>
             </tbody>
         </table>
     </div>
+</div>
+
+<div>
+    <a href="posts/deleted">
+        <button>휴지통</button>
+    </a>
 </div>
 
 </body>
