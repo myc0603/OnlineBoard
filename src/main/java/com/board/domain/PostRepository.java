@@ -15,8 +15,9 @@ public class PostRepository {
     private final EntityManager em;
 
     @Transactional
-    public void save(Post post) {
+    public Long save(Post post) {
         em.persist(post);
+        return post.getId();
     }
 
     public Post findById(Long id) {
@@ -31,7 +32,18 @@ public class PostRepository {
     }
 
     public List<Post> findAll() {
-        return em.createQuery("select p from Post p", Post.class)
+        return em.createQuery("select p from Post p where p.deleted = false", Post.class)
                 .getResultList();
+    }
+
+    public List<Post> findDeletedPosts() {
+        return em.createQuery("select p from Post p where p.deleted = true", Post.class)
+                .getResultList();
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Post post = em.find(Post.class, id);
+        em.remove(post);
     }
 }
