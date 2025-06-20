@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>삭제글 목록</title>
+</head>
+<body>
+
+<h1>휴지통</h1>
+
+<div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>삭제일</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.id}"></td>
+                <td>
+                    <a th:href="@{/posts/deleted/{id}(id=${post.id})}" th:text="${post.title}">제목</a>
+                </td>
+                <td th:text="${#temporals.format(post.createdDateTime, 'yyyy/MM/dd HH:mm')}">2025/06/03 11:11</td>
+                <td th:text="${#temporals.format(post.lastModifiedDateTime, 'yyyy/MM/dd HH:mm')}">2025/06/03 11:11</td>
+                <td>
+                    <form th:action="@{/posts/deleted/{id}/restore(id=${post.id})}" method="post">
+                        <button type="submit">복구</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <form th:action="@{/posts}" method="get">
+        <button type="submit">목록</button>
+    </form>
+</div>
+
+</body>
+</html>
