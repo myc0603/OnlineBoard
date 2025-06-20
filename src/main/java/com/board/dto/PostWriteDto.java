@@ -1,4 +1,4 @@
-package com.board.web;
+package com.board.dto;
 
 import com.board.domain.Post;
 import lombok.AllArgsConstructor;
