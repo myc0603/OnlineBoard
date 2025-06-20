@@ -10,12 +10,33 @@
 <p>
     <strong>작성일: </strong>
     <span th:text="${#temporals.format(post.createdDateTime, 'yyyy/MM/dd HH:mm')}">2024-04-01</span>
+<p>
+    <strong>수정일: </strong>
+    <span th:text="${#temporals.format(post.lastModifiedDateTime, 'yyyy/MM/dd HH:mm')}">2024-04-01</span>
 </p>
 
 <hr/>
 
 <div>
     <pre th:text="${post.contents}">내용</pre>
+</div>
+
+<div>
+    <form th:action="@{/posts}" method="get">
+        <button type="submit">목록</button>
+    </form>
+</div>
+
+<div>
+    <form th:action="@{/posts/{id}/edit(id=${post.id})}" method="get">
+        <button type="submit">수정</button>
+    </form>
+</div>
+
+<div>
+    <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
+        <button type="submit">삭제</button>
+    </form>
 </div>
 
 </body>
