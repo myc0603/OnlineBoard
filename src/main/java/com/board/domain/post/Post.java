@@ -1,5 +1,6 @@
-package com.board.domain;
+package com.board.domain.post;
 
+import com.board.domain.user.User;
 import com.board.dto.PostUpdateDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -19,6 +20,10 @@ public class Post {
     @GeneratedValue
     @Column(name = "post_id")
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @NotBlank
     private String title;
