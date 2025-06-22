@@ -1,8 +1,8 @@
 package com.board.web;
 
-import com.board.domain.Post;
-import com.board.domain.PostRepository;
-import com.board.domain.PostService;
+import com.board.domain.post.Post;
+import com.board.domain.post.PostRepository;
+import com.board.domain.post.PostService;
 import com.board.dto.PostUpdateDto;
 import com.board.dto.PostWriteDto;
 import lombok.RequiredArgsConstructor;

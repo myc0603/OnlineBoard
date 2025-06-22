@@ -1,4 +1,4 @@
-package com.board.domain;
+package com.board.domain.post;
 
 import com.board.dto.PostUpdateDto;
 import lombok.RequiredArgsConstructor;

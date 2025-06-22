@@ -1,6 +1,6 @@
 package com.board.dto;
 
-import com.board.domain.Post;
+import com.board.domain.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
